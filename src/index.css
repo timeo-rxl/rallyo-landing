@@ -2,10 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased selection:bg-court-soft selection:text-court;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible {
+    @apply outline-none ring-2 ring-court ring-offset-2 ring-offset-canvas;
+  }
 }
 
-body {
-  @apply bg-cream text-ink antialiased;
+.court-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.paper-court-lines {
+  background-image: linear-gradient(
+    to right,
+    rgba(20, 83, 45, 0.045) 1px,
+    transparent 1px
+  );
+  background-size: 96px 100%;
 }
